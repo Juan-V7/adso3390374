@@ -15,7 +15,6 @@
 |03. |CSS        |Look & Feel -  Cascading Style Sheet   |
 |04. |Javascript |Behavior - Programing language         |
 
-[ADSO Files Drive] (https://tinyurl.com/wnkk334u)
+[ADSO Files Drive](https://tinyurl.com/wnkk334u)
 
-
-[VERCEL URL] (https://vercerl.app)
+[VERCEL URL](https://vercerl.app)
