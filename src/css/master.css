@@ -128,7 +128,9 @@ main{
             }
             a:is(:hover) {
                 background-color: orange;
-                span{}
+                span{
+                    background-color: gray;
+                }
             }
         }
         a:is(:link, :visited){
