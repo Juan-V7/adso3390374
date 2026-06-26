@@ -112,7 +112,7 @@ main{
         flex-direction: column;
         gap: 0.6rem;
         &.submenu{
-            a:is(:link, ::visited){
+            a:is(:link, :visited){
                 span {
                     background-color:orange ;
                     font-size: 1rem;
