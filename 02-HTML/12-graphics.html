@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-graphics</title>
+    <link rel="stylesheet" href="../src/css/master.css">
+    <style>
+        /* Estilos opcionales para que visualices mejor los lienzos */
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        canvas, svg {
+            border: 1px dashed #ccc; /* Un borde sutil para ver el área de dibujo */
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body class="emmet">
+    <a href="index.html" class="btn-home">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path></svg>
+    </a>
+    <main>
+        <header>
+            <h1>12-graphics</h1>
+            <h4>Creates inline graphics with tags.</h4>
+        </header>
+
+        <section>
+            <div>
+                <h3>Canvas:</h3>
+                <canvas id="miCanvas" width="200" height="200"></canvas>
+            </div>
+
+            <div>
+                <h3>SVG:</h3>
+                <svg width="200" height="200">
+                <circle cx="100" cy="100" r="50" fill="#de3553" />
+                </svg>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 1. Obtenemos el elemento canvas por su ID
+        const canvas = document.getElementById('miCanvas');
+        // 2. Conseguimos el contexto de renderizado en 2D
+        const ctx = canvas.getContext('2d');
+
+        // 3. Dibujamos el círculo
+        ctx.beginPath();
+        // arc(x, y, radio, anguloInicio, anguloFin) -> Math.PI * 2 hace el círculo completo
+        ctx.arc(100, 100, 50, 0, Math.PI * 2);
+        ctx.fillStyle = '#358ade'; // Color azul para diferenciarlo del SVG
+        ctx.fill();
+        ctx.closePath();
+    </script>
+</body>
+</html>
