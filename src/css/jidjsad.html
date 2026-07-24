@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jidjsad.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<!DOCTYPEhtml>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    &lt;title>Guía de Aprendizaje - Evaluación de Requisitos del Software&lt;/title>
+    &lt;style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+<pre><code>    body {
+        background-color: #e2e6e9;
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        line-height: 1.45;
+        padding: 40px 20px;
+        color: #1e2a3a;
+    }
+
+    .guia-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+        border-radius: 4px;
+        overflow: hidden;
+        padding: 2rem 2rem 2.5rem 2rem;
+    }
+
+    .sena-header {
+        border-bottom: 3px solid #2c6e2f;
+        margin-bottom: 1.8rem;
+        padding-bottom: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+    }
+    .sena-header h3 {
+        color: #2c6e2f;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+    }
+    .sena-header p {
+        font-size: 0.85rem;
+        color: #2c3e50;
+    }
+
+    .titulo-formato {
+        background: #f0f4f8;
+        padding: 0.6rem 1rem;
+        border-left: 6px solid #2c6e2f;
+        margin: 1rem 0 1.5rem 0;
+    }
+    .titulo-formato h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #1f3b2c;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0;
+        font-size: 0.9rem;
+    }
+    th, td {
+        border: 1px solid #bdc4cc;
+        padding: 10px 12px;
+        vertical-align: top;
+        background-color: #fff;
+    }
+    th {
+        background-color: #eef2f7;
+        font-weight: 600;
+        color: #1e4663;
+    }
+
+    .seccion {
+        margin: 2rem 0 1.5rem 0;
+        border-bottom: 2px solid #cbd5e1;
+        padding-bottom: 0.5rem;
+    }
+    .seccion h2 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #1f4f2d;
+        display: inline-block;
+        background: #eef3e6;
+        padding: 0.2rem 1rem;
+        border-radius: 30px;
+    }
+
+    .subseccion {
+        margin: 1.5rem 0 1rem 0;
+        padding-left: 0.5rem;
+        border-left: 4px solid #7f8c8d;
+    }
+    .subseccion h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-actividad {
+        background: #fafcfd;
+        border: 1px solid #dce3ec;
+        border-radius: 16px;
+        padding: 1.2rem 1.5rem;
+        margin: 1.5rem 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+    .card-actividad p {
+        margin: 0.5rem 0;
+    }
+
+    .badge {
+        background-color: #2c6e2f;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: bold;
+        padding: 4px 10px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+
+    .badge-rap {
+        background-color: #1e4663;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: bold;
+        padding: 4px 10px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-bottom: 6px;
+    }
+
+    .importante {
+        background: #fff8e7;
+        border-left: 6px solid #e6a017;
+        padding: 1rem 1.2rem;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+        border-radius: 12px;
+    }
+    .importante strong {
+        color: #c45c00;
+    }
+
+    .grid-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+    .info-item {
+        flex: 1 1 220px;
+        background: #f8fafc;
+        padding: 0.6rem 1rem;
+        border-radius: 12px;
+        border: 1px solid #e2edf2;
+    }
+    .info-item strong {
+        display: block;
+        color: #1e4663;
+    }
+
+    .glosario {
+        background: #f9f9fc;
+        padding: 1rem 1.5rem;
+        border-radius: 20px;
+        margin: 1rem 0;
+    }
+
+    .ejercicio-box {
+        background: #f2f7fc;
+        border: 1px solid #b8d0e0;
+        border-radius: 16px;
+        padding: 1.2rem 1.5rem;
+        margin: 1.5rem 0;
+    }
+    .ejercicio-box h4 {
+        color: #0d3b5e;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .info-box {
+        background: #f0f7ff;
+        padding: 1.2rem;
+        border-radius: 12px;
+        margin: 1.2rem 0;
+        border-left: 4px solid #1e4663;
+    }
+    .info-box h4 {
+        color: #1e4663;
+        margin-bottom: 0.5rem;
+    }
+
+    .info-box-verde {
+        background: #f0fdf4;
+        border-left: 4px solid #166534;
+    }
+    .info-box-verde h4 {
+        color: #166534;
+    }
+
+    .info-box-naranja {
+        background: #fff8e7;
+        border-left: 4px solid #e6a017;
+    }
+    .info-box-naranja h4 {
+        color: #b45309;
+    }
+
+    .grid-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 1.2rem 0;
+    }
+
+    .timeline {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1.2rem 0;
+    }
+    .timeline-item {
+        flex: 1;
+        min-width: 150px;
+        background: #f8fafc;
+        padding: 0.8rem 1rem;
+        border-radius: 12px;
+        border: 1px solid #e2edf2;
+        text-align: center;
+    }
+    .timeline-item .dia {
+        background: #1e4663;
+        color: white;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 0.5rem auto;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+    .timeline-item .titulo-dia {
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+    .timeline-item .desc-dia {
+        font-size: 0.75rem;
+        color: #4a5a6a;
+    }
+
+    footer {
+        margin-top: 2.5rem;
+        font-size: 0.75rem;
+        text-align: center;
+        color: #5a6874;
+        border-top: 1px solid #dfe6ed;
+        padding-top: 1.5rem;
+    }
+
+    @media (max-width: 700px) {
+        .guia-container { padding: 1.2rem; }
+        th, td { padding: 6px 8px; font-size: 0.8rem; }
+        .seccion h2 { font-size: 1.3rem; }
+        .grid-2col { grid-template-columns: 1fr; }
+        .timeline { flex-direction: column; }
+    }
+&lt;/style&gt;
+</code></pre>
+</head>
+<body>
+<div class="guia-container">
+    <!-- Encabezado institucional -->
+    <div class="sena-header">
+        <div>
+            <h3>PROCESO DE GESTIÓN DE FORMACIÓN PROFESIONAL INTEGRAL</h3>
+            <p>FORMATO GUÍA DE APRENDIZAJE - GFPI-F-135 Versión 4</p>
+        </div>
+        <div>
+            <p>Código: GFPI-F-135</p>
+        </div>
+    </div>
+<pre><code>&lt;!-- 1. IDENTIFICACIÓN DE LA GUIA DE APRENDIZAJE --&gt;
+&lt;div class=&quot;titulo-formato&quot;&gt;
+    &lt;h1&gt;1. IDENTIFICACIÓN DE LA GUIA DE APRENDIZAJE&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div class=&quot;grid-info&quot;&gt;
+    &lt;div class=&quot;info-item&quot;&gt;&lt;strong&gt;Denominación del Programa:&lt;/strong&gt; ANÁLISIS Y DESARROLLO DE SOFTWARE&lt;/div&gt;
+    &lt;div class=&quot;info-item&quot;&gt;&lt;strong&gt;Código del Programa:&lt;/strong&gt; 228118&lt;/div&gt;
+    &lt;div class=&quot;info-item&quot;&gt;&lt;strong&gt;Nombre del Proyecto:&lt;/strong&gt; DESARROLLO DE UN SOFTWARE INTEGRADOR DE TECNOLOGÍAS QUE CUMPLA CON LOS REQUERIMIENTOS DEL CLIENTE EN PROCESOS QUE SE LLEVEN A CABO EN EL SECTOR PRODUCTIVO DE LA REGIÓN&lt;/div&gt;
+    &lt;div class=&quot;info-item&quot;&gt;&lt;strong&gt;Fase del Proyecto:&lt;/strong&gt; PLANIFICACIÓN / ANÁLISIS&lt;/div&gt;
+    &lt;div class=&quot;info-item&quot;&gt;&lt;strong&gt;Actividad de Proyecto:&lt;/strong&gt; ESTABLECER METODOLOGÍA DE DESARROLLO A UTILIZAR&lt;/div&gt;
+    &lt;div class=&quot;info-item&quot;&gt;&lt;strong&gt;Competencia:&lt;/strong&gt; 220501093 - EVALUAR REQUISITOS DE LA SOLUCIÓN DE SOFTWARE DE ACUERDO CON METODOLOGÍAS DE ANÁLISIS Y ESTÁNDARES&lt;/div&gt;
+    &lt;div class=&quot;info-item&quot;&gt;&lt;strong&gt;Resultados de Aprendizaje Alcanzar:&lt;/strong&gt;&lt;br&gt;
+        &lt;span class=&quot;badge-rap&quot;&gt;RAP 01&lt;/span&gt; PLANEAR ACTIVIDADES DE ANÁLISIS DE ACUERDO CON LA METODOLOGÍA SELECCIONADA&lt;br&gt;
+        &lt;span class=&quot;badge-rap&quot;&gt;RAP 02&lt;/span&gt; MODELAR LAS FUNCIONES DEL SOFTWARE DE ACUERDO CON EL INFORME DE REQUISITOS
+    &lt;/div&gt;
+    &lt;div class=&quot;info-item&quot;&gt;&lt;strong&gt;Duración de la Guía:&lt;/strong&gt; 96 horas&lt;/div&gt;
+    &lt;div class=&quot;info-item&quot;&gt;&lt;strong&gt;Instructor:&lt;/strong&gt; José Germán Estrada Clavijo&lt;/div&gt;
+    &lt;div class=&quot;info-item&quot;&gt;&lt;strong&gt;Fecha de Creación:&lt;/strong&gt; Julio de 2026&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 2. PRESENTACIÓN --&gt;
+&lt;div class=&quot;seccion&quot;&gt;
+    &lt;h2&gt;2. PRESENTACIÓN&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;Estimado aprendiz, esta guía ha sido diseñada para que desarrolle las competencias necesarias para &lt;strong&gt;evaluar los requisitos de una solución de software&lt;/strong&gt;, aplicando metodologías de análisis y estándares de la industria. La fase de análisis es fundamental en el ciclo de vida del software, ya que permite transformar los requisitos del cliente en modelos que guiarán el diseño y la construcción del sistema.&lt;/p&gt;
+&lt;p&gt;En esta guía abordará dos resultados de aprendizaje clave: la planeación de actividades de análisis según metodologías tradicionales o ágiles, y el modelado de las funciones del software utilizando UML (Lenguaje Unificado de Modelado). Aplicará técnicas como diagramas de casos de uso, diagramas de actividades, modelos de dominio y prototipado inicial, todo ello documentado según el estándar IEEE 830 y las buenas prácticas de la ingeniería de requisitos.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Propósito:&lt;/strong&gt; Desarrollar habilidades para planificar el análisis de software, seleccionar la metodología adecuada según el contexto del proyecto, y modelar las funciones del sistema a partir de los requisitos, garantizando la calidad y trazabilidad de los artefactos generados.&lt;/p&gt;
+
+&lt;!-- 3. FORMULACIÓN DE LAS ACTIVIDADES DE APRENDIZAJE --&gt;
+&lt;div class=&quot;seccion&quot;&gt;
+    &lt;h2&gt;3. FORMULACIÓN DE LAS ACTIVIDADES DE APRENDIZAJE&lt;/h2&gt;
+&lt;/div&gt;
+
+&lt;!-- 3.1 Actividades de reflexión inicial --&gt;
+&lt;div class=&quot;subseccion&quot;&gt;
+    &lt;h3&gt;3.1 Actividades de reflexión inicial&lt;/h3&gt;
+    &lt;div class=&quot;card-actividad&quot;&gt;
+        &lt;span class=&quot;badge&quot;&gt;Situación problémica&lt;/span&gt;
+        &lt;p&gt;&lt;strong&gt;Descripción:&lt;/strong&gt; La empresa &quot;Tecnologías del Futuro S.A.S.&quot; ha definido los requisitos para su sistema de gestión de inventarios y ventas. Sin embargo, el equipo de desarrollo necesita planificar el análisis para construir los modelos que guiarán el diseño. Surgen preguntas clave: ¿Qué metodología de análisis es más adecuada para este proyecto? ¿Cómo se deben priorizar las actividades de análisis? ¿Qué modelos UML son necesarios para representar las funciones del sistema? Esta actividad busca que reflexione sobre la importancia de una planificación adecuada y la selección de técnicas de modelado para garantizar el éxito del proyecto.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Ambiente requerido:&lt;/strong&gt; Aula convencional / plataforma Teams / Ambiente polivalente.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Estrategias didácticas activas:&lt;/strong&gt; Lluvia de ideas, estudio de casos, rueda de saberes, aprendizaje basado en problemas.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Materiales de formación:&lt;/strong&gt; Guía impresa, presentación interactiva, documentos técnicos de referencia.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Material de apoyo:&lt;/strong&gt; Artículos sobre metodologías de análisis, infografías de UML, videos motivacionales.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Duración:&lt;/strong&gt; 6 horas.&lt;/p&gt;
+        &lt;div class=&quot;importante&quot;&gt;&lt;strong&gt;¡Importante!&lt;/strong&gt; En este momento NO se propone recolección de evidencias de evaluación (solo reflexión y análisis).&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 3.2 Actividades de contextualización e identificación de conocimientos necesarios --&gt;
+&lt;div class=&quot;subseccion&quot;&gt;
+    &lt;h3&gt;3.2 Actividades de contextualización e identificación de conocimientos necesarios&lt;/h3&gt;
+    &lt;div class=&quot;card-actividad&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;Descripción:&lt;/strong&gt; A partir de la situación problémica, se realizarán ejercicios de identificación de saberes previos mediante técnicas de preguntas orientadoras, socialización de experiencias laborales y lluvia de ideas. El propósito es reconocer los conocimientos construidos previamente sobre metodologías de desarrollo (RUP, SCRUM, XP), técnicas de modelado con UML y estándares de documentación, estableciendo puentes con los nuevos contenidos.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Ambiente requerido:&lt;/strong&gt; Salón de formación o entorno virtual (LMS).&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Estrategias o técnicas didácticas activas:&lt;/strong&gt; Aprendizaje colaborativo, mapas de ideas previas, foro de discusión.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Materiales de formación:&lt;/strong&gt; Guía de trabajo, cuestionario diagnóstico, recursos multimedia.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Material de apoyo:&lt;/strong&gt; Casos contextualizados, normativa sectorial, estándares UML e IEEE.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Duración:&lt;/strong&gt; 8 horas.&lt;/p&gt;
+        &lt;div class=&quot;importante&quot;&gt;&lt;strong&gt;¡Importante!&lt;/strong&gt; No se recolectan evidencias formales para juicio evaluativo en esta etapa.&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 3.3 Actividades de apropiación (saber - saber hacer - ser) --&gt;
+&lt;div class=&quot;subseccion&quot;&gt;
+    &lt;h3&gt;3.3 Actividades de apropiación (saber - saber hacer - ser)&lt;/h3&gt;
+    &lt;div class=&quot;card-actividad&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;Descripción:&lt;/strong&gt; El aprendiz interioriza los conceptos, técnicas y procedimientos necesarios para la evaluación de requisitos. Se desarrollan 5 ejercicios prácticos que integran los dos resultados de aprendizaje, aplicando metodologías de análisis, modelado con UML y documentación según IEEE 830.&lt;/p&gt;
+
+        &lt;!-- EJERCICIO 1: Selección de Metodología y Planeación de Actividades --&gt;
+        &lt;div class=&quot;ejercicio-box&quot;&gt;
+            &lt;span class=&quot;badge-rap&quot;&gt;RAP 01&lt;/span&gt;
+            &lt;h4&gt;📘 Ejercicio 1: Selección de Metodología y Planeación de Actividades de Análisis&lt;/h4&gt;
+            &lt;p&gt;&lt;strong&gt;Objetivo:&lt;/strong&gt; Seleccionar la metodología de análisis más adecuada para un proyecto de software y planificar las actividades de análisis correspondientes.&lt;/p&gt;
+            &lt;div class=&quot;info-box&quot;&gt;
+                &lt;h4&gt;📄 Caso práctico:&lt;/h4&gt;
+                &lt;p&gt;La empresa &quot;Tecnologías del Futuro S.A.S.&quot; ha definido los siguientes requisitos para su sistema:&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;strong&gt;Funcionalidades principales:&lt;/strong&gt; Gestión de inventarios, ventas, clientes, proveedores, generación de reportes.&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Equipo de trabajo:&lt;/strong&gt; 6 desarrolladores, 2 analistas, 1 líder técnico.&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Plazo:&lt;/strong&gt; 4 meses para la fase de análisis.&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Estabilidad de requisitos:&lt;/strong&gt; Los requisitos son estables en su mayoría, pero se esperan ajustes durante el desarrollo.&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Cultura organizacional:&lt;/strong&gt; La empresa está abierta a metodologías ágiles pero requiere documentación formal.&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;p&gt;&lt;strong&gt;Actividades a desarrollar:&lt;/strong&gt;&lt;/p&gt;
+            &lt;ol style=&quot;margin-left: 1.8rem; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;&lt;strong&gt;Evaluación de metodologías:&lt;/strong&gt; Compare metodologías tradicionales (RUP) y ágiles (SCRUM, XP) considerando el contexto del proyecto.&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Selección justificada:&lt;/strong&gt; Seleccione la metodología más adecuada y justifique su elección basándose en los criterios del proyecto (plazo, estabilidad de requisitos, cultura organizacional).&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Plan de actividades:&lt;/strong&gt; Defina las actividades de análisis que se realizarán según la metodología seleccionada, incluyendo:&lt;/li&gt;
+                &lt;ul style=&quot;margin-left: 1.8rem;&quot;&gt;
+                    &lt;li&gt;Entregables esperados (informes, modelos, prototipos).&lt;/li&gt;
+                    &lt;li&gt;Cronograma con fechas estimadas.&lt;/li&gt;
+                    &lt;li&gt;Roles y responsabilidades del equipo.&lt;/li&gt;
+                    &lt;li&gt;Herramientas a utilizar (CASE, UML, gestión de proyectos).&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;li&gt;&lt;strong&gt;Documentación:&lt;/strong&gt; Elabore un informe de planeación de análisis que incluya la justificación de la metodología y el plan de actividades.&lt;/li&gt;
+            &lt;/ol&gt;
+            &lt;p&gt;&lt;strong&gt;Evidencia:&lt;/strong&gt; Informe de planeación de análisis con metodología seleccionada, justificación, actividades, cronograma y roles.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Duración:&lt;/strong&gt; 14 horas (8 presenciales + 6 autónomas).&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- EJERCICIO 2: Interpretación del Informe de Requisitos --&gt;
+        &lt;div class=&quot;ejercicio-box&quot;&gt;
+            &lt;span class=&quot;badge-rap&quot;&gt;RAP 02&lt;/span&gt;
+            &lt;h4&gt;📘 Ejercicio 2: Interpretación del Informe de Requisitos y Contextualización&lt;/h4&gt;
+            &lt;p&gt;&lt;strong&gt;Objetivo:&lt;/strong&gt; Interpretar el informe de requisitos para identificar los actores, casos de uso y el alcance del sistema.&lt;/p&gt;
+            &lt;div class=&quot;info-box&quot;&gt;
+                &lt;h4&gt;📄 Caso práctico:&lt;/h4&gt;
+                &lt;p&gt;El informe de requisitos del sistema de gestión de inventarios y ventas incluye la siguiente información:&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;strong&gt;Actores identificados:&lt;/strong&gt; Administrador, Vendedor, Consultor, Cliente, Proveedor.&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Funcionalidades principales:&lt;/strong&gt; Gestión de productos, gestión de clientes, gestión de proveedores, facturación, reportes, control de inventario.&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Requisitos no funcionales:&lt;/strong&gt; Seguridad (autenticación y autorización), rendimiento (tiempos de respuesta &lt; 2 seg), usabilidad (interfaz intuitiva).&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;p&gt;&lt;strong&gt;Actividades a desarrollar:&lt;/strong&gt;&lt;/p&gt;
+            &lt;ol style=&quot;margin-left: 1.8rem; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;&lt;strong&gt;Identificación de actores:&lt;/strong&gt; Verifique y complete la lista de actores del sistema, describiendo sus roles y responsabilidades.&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Identificación de casos de uso:&lt;/strong&gt; A partir de las funcionalidades descritas, identifique los casos de uso del sistema, asignándoles un nombre y una descripción breve.&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Relación actores-casos de uso:&lt;/strong&gt; Defina qué actores participan en cada caso de uso.&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Contexto del sistema:&lt;/strong&gt; Determine los límites del sistema (qué incluye y qué no incluye) y las interfaces con otros sistemas externos.&lt;/li&gt;
+            &lt;/ol&gt;
+            &lt;p&gt;&lt;strong&gt;Evidencia:&lt;/strong&gt; Documento de interpretación de requisitos que incluya actores, casos de uso y límites del sistema.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Duración:&lt;/strong&gt; 12 horas (6 presenciales + 6 autónomas).&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- EJERCICIO 3: Diagrama de Casos de Uso --&gt;
+        &lt;div class=&quot;ejercicio-box&quot;&gt;
+            &lt;span class=&quot;badge-rap&quot;&gt;RAP 02&lt;/span&gt;
+            &lt;h4&gt;📘 Ejercicio 3: Elaboración del Diagrama de Casos de Uso&lt;/h4&gt;
+            &lt;p&gt;&lt;strong&gt;Objetivo:&lt;/strong&gt; Elaborar el diagrama de casos de uso UML que represente gráficamente las funciones del sistema y sus actores.&lt;/p&gt;
+            &lt;div class=&quot;info-box&quot;&gt;
+                &lt;h4&gt;📄 Caso práctico:&lt;/h4&gt;
+                &lt;p&gt;Con base en los actores y casos de uso identificados en el ejercicio anterior, se debe construir el diagrama de casos de uso del sistema.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;p&gt;&lt;strong&gt;Actividades a desarrollar:&lt;/strong&gt;&lt;/p&gt;
+            &lt;ol style=&quot;margin-left: 1.8rem; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;&lt;strong&gt;Diseño del diagrama:&lt;/strong&gt; Utilizando una herramienta de modelado (Enterprise Architect, Lucidchart, Draw.io), elabore el diagrama de casos de uso UML.&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Relaciones:&lt;/strong&gt; Identifique y represente las relaciones entre actores y casos de uso (asociación, herencia, inclusión, extensión).&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Descripción de casos de uso:&lt;/strong&gt; Genere plantillas extendidas de casos de uso para al menos 3 casos de uso principales, describiendo:&lt;/li&gt;
+                &lt;ul style=&quot;margin-left: 1.8rem;&quot;&gt;
+                    &lt;li&gt;Nombre y código.&lt;/li&gt;
+                    &lt;li&gt;Descripción.&lt;/li&gt;
+                    &lt;li&gt;Actores participantes.&lt;/li&gt;
+                    &lt;li&gt;Precondiciones y poscondiciones.&lt;/li&gt;
+                    &lt;li&gt;Flujo básico y flujos alternativos.&lt;/li&gt;
+                    &lt;li&gt;Excepciones.&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;li&gt;&lt;strong&gt;Verificación:&lt;/strong&gt; Asegúrese de que todos los requisitos funcionales estén cubiertos por al menos un caso de uso.&lt;/li&gt;
+            &lt;/ol&gt;
+            &lt;p&gt;&lt;strong&gt;Evidencia:&lt;/strong&gt; Diagrama de casos de uso UML y plantillas extendidas de casos de uso.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Duración:&lt;/strong&gt; 16 horas (8 presenciales + 8 autónomas).&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- EJERCICIO 4: Diagramas de Actividades y Modelo de Dominio --&gt;
+        &lt;div class=&quot;ejercicio-box&quot;&gt;
+            &lt;span class=&quot;badge-rap&quot;&gt;RAP 02&lt;/span&gt;
+            &lt;h4&gt;📘 Ejercicio 4: Diagramas de Actividades y Modelo de Dominio&lt;/h4&gt;
+            &lt;p&gt;&lt;strong&gt;Objetivo:&lt;/strong&gt; Elaborar diagramas de actividades para detallar los flujos de trabajo y construir el modelo de dominio del sistema.&lt;/p&gt;
+            &lt;div class=&quot;info-box&quot;&gt;
+                &lt;h4&gt;📄 Caso práctico:&lt;/h4&gt;
+                &lt;p&gt;Se requiere detallar los flujos de trabajo de los casos de uso &quot;Registrar venta&quot; y &quot;Actualizar inventario&quot;, además de representar el negocio en términos de clases abstractas.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;p&gt;&lt;strong&gt;Actividades a desarrollar:&lt;/strong&gt;&lt;/p&gt;
+            &lt;ol style=&quot;margin-left: 1.8rem; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;&lt;strong&gt;Diagramas de actividades:&lt;/strong&gt; Para los casos de uso &quot;Registrar venta&quot; y &quot;Actualizar inventario&quot;, elabore diagramas de actividades UML que describan:&lt;/li&gt;
+                &lt;ul style=&quot;margin-left: 1.8rem;&quot;&gt;
+                    &lt;li&gt;El flujo de trabajo paso a paso.&lt;/li&gt;
+                    &lt;li&gt;Las decisiones y bifurcaciones.&lt;/li&gt;
+                    &lt;li&gt;Las actividades de los actores involucrados.&lt;/li&gt;
+                    &lt;li&gt;Los objetos de negocio que participan.&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;li&gt;&lt;strong&gt;Modelo de dominio:&lt;/strong&gt; A partir del análisis de los casos de uso y las reglas de negocio, construya el modelo de dominio (diagrama de clases del dominio) que represente:&lt;/li&gt;
+                &lt;ul style=&quot;margin-left: 1.8rem;&quot;&gt;
+                    &lt;li&gt;Las entidades principales del negocio (Producto, Venta, Cliente, Proveedor, Inventario).&lt;/li&gt;
+                    &lt;li&gt;Los atributos y métodos relevantes de cada entidad.&lt;/li&gt;
+                    &lt;li&gt;Las relaciones y multiplicidades entre entidades.&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;li&gt;&lt;strong&gt;Consistencia:&lt;/strong&gt; Verifique que el modelo de dominio sea consistente con los casos de uso y los diagramas de actividades.&lt;/li&gt;
+            &lt;/ol&gt;
+            &lt;p&gt;&lt;strong&gt;Evidencia:&lt;/strong&gt; Diagramas de actividades y modelo de dominio (diagrama de clases del dominio).&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Duración:&lt;/strong&gt; 18 horas (10 presenciales + 8 autónomas).&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- EJERCICIO 5: Verificación de Modelos y Prototipo Inicial --&gt;
+        &lt;div class=&quot;ejercicio-box&quot;&gt;
+            &lt;span class=&quot;badge-rap&quot;&gt;RAP 01 y 02&lt;/span&gt;
+            &lt;h4&gt;📘 Ejercicio 5: Verificación de Modelos y Prototipo Inicial del Software&lt;/h4&gt;
+            &lt;p&gt;&lt;strong&gt;Objetivo:&lt;/strong&gt; Verificar la calidad de los modelos realizados en la fase de análisis y elaborar un prototipo inicial del software.&lt;/p&gt;
+            &lt;div class=&quot;info-box&quot;&gt;
+                &lt;h4&gt;📄 Caso práctico:&lt;/h4&gt;
+                &lt;p&gt;El equipo de análisis ha generado los modelos del sistema. Ahora se debe verificar su calidad, consistencia y completitud antes de avanzar a la fase de diseño.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;p&gt;&lt;strong&gt;Actividades a desarrollar:&lt;/strong&gt;&lt;/p&gt;
+            &lt;ol style=&quot;margin-left: 1.8rem; line-height: 1.8;&quot;&gt;
+                &lt;li&gt;&lt;strong&gt;Listas de chequeo:&lt;/strong&gt; Elabore listas de chequeo para verificar los siguientes artefactos:&lt;/li&gt;
+                &lt;ul style=&quot;margin-left: 1.8rem;&quot;&gt;
+                    &lt;li&gt;Diagrama de casos de uso (completitud, relaciones, claridad).&lt;/li&gt;
+                    &lt;li&gt;Diagramas de actividades (flujo correcto, decisiones, consistencia).&lt;/li&gt;
+                    &lt;li&gt;Modelo de dominio (entidades, atributos, relaciones, multiplicidades).&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;li&gt;&lt;strong&gt;Evaluación de modelos:&lt;/strong&gt; Aplique las listas de chequeo a los modelos generados, documentando los hallazgos y áreas de mejora.&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Prototipo inicial:&lt;/strong&gt; Con base en los casos de uso identificados, elabore un prototipo inicial del software (baja fidelidad) que muestre:&lt;/li&gt;
+                &lt;ul style=&quot;margin-left: 1.8rem;&quot;&gt;
+                    &lt;li&gt;Las pantallas principales del sistema.&lt;/li&gt;
+                    &lt;li&gt;La navegación entre pantallas.&lt;/li&gt;
+                    &lt;li&gt;La interacción con los actores.&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;li&gt;&lt;strong&gt;Informe de verificación:&lt;/strong&gt; Genere un informe de verificación que incluya los resultados de las listas de chequeo y las mejoras realizadas a los modelos.&lt;/li&gt;
+            &lt;/ol&gt;
+            &lt;p&gt;&lt;strong&gt;Evidencia:&lt;/strong&gt; Listas de chequeo aplicadas, modelos ajustados, prototipo inicial e informe de verificación.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Duración:&lt;/strong&gt; 16 horas (8 presenciales + 8 autónomas).&lt;/p&gt;
+            &lt;div class=&quot;importante&quot;&gt;&lt;strong&gt;¡Importante!&lt;/strong&gt; Este ejercicio integra ambos RAP y representa el producto final de la guía de aprendizaje.&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;p&gt;&lt;strong&gt;Ambiente requerido:&lt;/strong&gt; Laboratorio de informática con herramientas de modelado (Enterprise Architect, Lucidchart, Draw.io) y prototipado (Figma, Balsamiq).&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Estrategias didácticas activas:&lt;/strong&gt; Aprendizaje basado en proyectos, estudio de casos, simulación, taller práctico.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Materiales de formación:&lt;/strong&gt; Guía de ejercicios, normas IEEE 830, bibliografía de análisis y UML, plantillas de informes.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Evidencias de aprendizaje:&lt;/strong&gt; Informe de planeación de análisis, diagramas UML, plantillas de casos de uso, modelo de dominio, prototipo inicial, listas de chequeo, informe de verificación.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Instrumentos de evaluación:&lt;/strong&gt; Rúbrica analítica para cada ejercicio, lista de cotejo para verificación de modelos.&lt;/p&gt;
+        &lt;div class=&quot;importante&quot;&gt;&lt;strong&gt;¡Importante!&lt;/strong&gt; En esta fase se recolectan todas las evidencias para la evaluación de las competencias. Cada ejercicio debe ser documentado y entregado en las fechas establecidas.&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 3.4 Actividades de Transferencia del Conocimiento --&gt;
+&lt;div class=&quot;subseccion&quot;&gt;
+    &lt;h3&gt;3.4 Actividades de Transferencia del Conocimiento&lt;/h3&gt;
+    &lt;div class=&quot;card-actividad&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;Descripción:&lt;/strong&gt; El aprendiz aplica los conocimientos de evaluación de requisitos en un contexto real o simulado. Se propone la elaboración de un informe de análisis completo para un proyecto real o simulado, integrando la planeación de actividades, los modelos UML (casos de uso, actividades, dominio) y la verificación de los artefactos generados.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Actividad de transferencia:&lt;/strong&gt;&lt;/p&gt;
+        &lt;ol style=&quot;margin-left: 1.8rem; line-height: 1.8;&quot;&gt;
+            &lt;li&gt;&lt;strong&gt;Selección del proyecto:&lt;/strong&gt; Seleccione un proyecto de software real o simulado (puede ser el proyecto formativo del SENA).&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Planeación del análisis:&lt;/strong&gt; Defina la metodología de análisis a utilizar y planifique las actividades, cronograma y entregables.&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Interpretación de requisitos:&lt;/strong&gt; Identifique actores, casos de uso y el alcance del sistema.&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Modelado:&lt;/strong&gt; Elabore los diagramas de casos de uso, actividades y el modelo de dominio.&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Verificación:&lt;/strong&gt; Aplique listas de chequeo y realice las mejoras necesarias a los modelos.&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Prototipo inicial:&lt;/strong&gt; Elabore un prototipo inicial del software que refleje las funciones principales.&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Sustentación:&lt;/strong&gt; Presente el informe de análisis ante un comité evaluador (instructor y compañeros), justificando las decisiones de modelado y la metodología seleccionada.&lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;p&gt;&lt;strong&gt;Ambiente requerido:&lt;/strong&gt; Aula de informática / sala de presentaciones / entorno real controlado.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Estrategias didácticas activas:&lt;/strong&gt; Aprendizaje orientado a proyectos, simulación de negocio, sustentación oral.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Materiales de formación:&lt;/strong&gt; Plantillas de informes, guías de modelado, formatos de verificación.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Evidencias de aprendizaje:&lt;/strong&gt; Informe de análisis completo, diagramas UML, prototipo inicial, listas de chequeo, presentación de sustentación.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Instrumentos de evaluación:&lt;/strong&gt; Rúbrica de presentación y sustentación, lista de cotejo para informe de análisis.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Duración:&lt;/strong&gt; 16 horas (8 presenciales + 8 autónomas).&lt;/p&gt;
+        &lt;div class=&quot;importante&quot;&gt;&lt;strong&gt;¡Importante!&lt;/strong&gt; Esta actividad permite evidenciar la transferencia del conocimiento a contextos reales, demostrando la capacidad de evaluar requisitos de software de manera profesional.&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 4. PLANTEAMIENTO DE EVIDENCIAS DE APRENDIZAJE PARA LA EVALUACIÓN --&gt;
+&lt;div class=&quot;seccion&quot;&gt;
+    &lt;h2&gt;4. PLANTEAMIENTO DE EVIDENCIAS DE APRENDIZAJE PARA LA EVALUACIÓN EN EL PROCESO FORMATIVO&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Referencia: Técnicas e instrumentos de evaluación según GFPI-G-046 Versión 1.&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Fase del proyecto formativo&lt;/th&gt;
+            &lt;th&gt;Actividad del proyecto formativo&lt;/th&gt;
+            &lt;th&gt;Actividad de Aprendizaje&lt;/th&gt;
+            &lt;th&gt;Evidencias de Aprendizaje&lt;/th&gt;
+            &lt;th&gt;Criterios de Evaluación&lt;/th&gt;
+            &lt;th&gt;Técnicas e Instrumentos de Evaluación&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;PLANIFICACIÓN / ANÁLISIS&lt;/td&gt;
+            &lt;td&gt;ESTABLECER METODOLOGÍA DE DESARROLLO A UTILIZAR&lt;/td&gt;
+            &lt;td&gt;Ejercicios 1 al 5 (apropiación) + Transferencia&lt;/td&gt;
+            &lt;td&gt;
+                &lt;strong&gt;Evidencias de Conocimiento:&lt;/strong&gt; Informe de planeación de análisis, documentación de metodologías.&lt;br&gt;
+                &lt;strong&gt;Evidencias de Desempeño:&lt;/strong&gt; Diagramas de casos de uso, actividades, modelo de dominio, listas de chequeo.&lt;br&gt;
+                &lt;strong&gt;Evidencias de Producto:&lt;/strong&gt; Informe de análisis completo, prototipo inicial, informe de verificación.
+            &lt;/td&gt;
+            &lt;td&gt;Planea actividades de análisis, selecciona metodologías, modela funciones del software, verifica modelos y realiza prototipo inicial.&lt;/td&gt;
+            &lt;td&gt;&lt;strong&gt;Técnica:&lt;/strong&gt; Análisis de producto, observación estructurada, sustentación oral. &lt;strong&gt;Instrumento:&lt;/strong&gt; Rúbrica analítica, lista de cotejo, rúbrica de presentación.&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&quot;importante&quot;&gt;
+    &lt;strong&gt;Tipos de evidencia:&lt;/strong&gt; Evidencia de Conocimiento (documentación, conceptos); Evidencia de Desempeño (diagramas, modelos); Evidencia de Producto (informe final, prototipo). Todas alineadas con los Resultados de Aprendizaje.
+&lt;/div&gt;
+
+&lt;!-- 5. GLOSARIO DE TÉRMINOS --&gt;
+&lt;div class=&quot;seccion&quot;&gt;
+    &lt;h2&gt;5. GLOSARIO DE TÉRMINOS&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&quot;glosario&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;Análisis de requisitos:&lt;/strong&gt; Proceso de estudiar y descomponer los requisitos para comprender su significado y transformarlos en modelos.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;UML (Lenguaje Unificado de Modelado):&lt;/strong&gt; Estándar para la visualización, especificación y documentación de sistemas de software.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Diagrama de casos de uso:&lt;/strong&gt; Representa las funcionalidades del sistema desde la perspectiva del usuario, mostrando actores y casos de uso.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Diagrama de actividades:&lt;/strong&gt; Muestra el flujo de trabajo o proceso, incluyendo decisiones, bifurcaciones y concurrencia.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Modelo de dominio:&lt;/strong&gt; Representa las clases conceptuales del negocio, sus atributos y relaciones.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Metodología ágil:&lt;/strong&gt; Enfoque de desarrollo iterativo e incremental que prioriza la colaboración y la respuesta al cambio.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Metodología tradicional:&lt;/strong&gt; Enfoque de desarrollo planificado y secuencial, como RUP (Proceso Unificado Racional).&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Prototipo:&lt;/strong&gt; Versión inicial del software que permite visualizar la interfaz y la interacción con el usuario.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Lista de chequeo:&lt;/strong&gt; Instrumento de verificación que contiene criterios de aceptación para evaluar la calidad de los artefactos.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- 6. REFERENTES BIBLIOGRÁFICOS --&gt;
+&lt;div class=&quot;seccion&quot;&gt;
+    &lt;h2&gt;6. REFERENTES BIBLIOGRÁFICOS&lt;/h2&gt;
+&lt;/div&gt;
+&lt;ul style=&quot;margin-left: 1.8rem; line-height: 1.8;&quot;&gt;
+    &lt;li&gt;IEEE. (1998). &lt;em&gt;IEEE Std 830-1998: IEEE Recommended Practice for Software Requirements Specifications&lt;/em&gt;. IEEE Computer Society.&lt;/li&gt;
+    &lt;li&gt;Pressman, R. S. (2014). &lt;em&gt;Ingeniería del Software: Un Enfoque Práctico&lt;/em&gt;. McGraw-Hill.&lt;/li&gt;
+    &lt;li&gt;Sommerville, I. (2011). &lt;em&gt;Ingeniería del Software&lt;/em&gt;. Pearson.&lt;/li&gt;
+    &lt;li&gt;Fowler, M. (2004). &lt;em&gt;UML Distilled: A Brief Guide to the Standard Object Modeling Language&lt;/em&gt;. Addison-Wesley.&lt;/li&gt;
+    &lt;li&gt;Larman, C. (2005). &lt;em&gt;UML y Patrones: Introducción al Análisis y Diseño Orientado a Objetos&lt;/em&gt;. Pearson.&lt;/li&gt;
+    &lt;li&gt;Schwaber, K., &amp; Sutherland, J. (2020). &lt;em&gt;The Scrum Guide&lt;/em&gt;. Scrum.org.&lt;/li&gt;
+    &lt;li&gt;SENA. (2023). Guía de Gestión Curricular GFPI-G-046 Versión 1. Dirección de Formación Profesional.&lt;/li&gt;
+    &lt;li&gt;Planeación pedagógica GFPI-F-134 – Versión 4, SENA.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- 7. CONTROL DEL DOCUMENTO --&gt;
+&lt;div class=&quot;seccion&quot;&gt;
+    &lt;h2&gt;7. CONTROL DEL DOCUMENTO&lt;/h2&gt;
+&lt;/div&gt;
+&lt;table&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Cargo&lt;/th&gt;&lt;th&gt;Dependencia&lt;/th&gt;&lt;th&gt;Fecha&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;José Germán Estrada Clavijo&lt;/td&gt;&lt;td&gt;Instructor Técnico&lt;/td&gt;&lt;td&gt;Centro de Procesos Industriales y Construcción - Regional Caldas&lt;/td&gt;&lt;td&gt;Julio de 2026&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- 8. CONTROL DE CAMBIOS --&gt;
+&lt;div class=&quot;seccion&quot;&gt;
+    &lt;h2&gt;8. CONTROL DE CAMBIOS&lt;/h2&gt;
+&lt;/div&gt;
+&lt;table&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Cargo&lt;/th&gt;&lt;th&gt;Dependencia&lt;/th&gt;&lt;th&gt;Fecha&lt;/th&gt;&lt;th&gt;Razón del Cambio&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;José Germán Estrada Clavijo&lt;/td&gt;&lt;td&gt;Instructor&lt;/td&gt;&lt;td&gt;Coordinación Académica&lt;/td&gt;&lt;td&gt;Julio de 2026&lt;/td&gt;&lt;td&gt;Creación inicial de la guía para la competencia 220501093 - Evaluación de Requisitos del Software.&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;Formato GFPI-F-135 Versión 4 – Guía de Aprendizaje integrada con todas las secciones: reflexión inicial, contextualización, apropiación (5 ejercicios), transferencia, evidencias, glosario y referentes bibliográficos.&lt;/p&gt;
+    &lt;p&gt;© Servicio Nacional de Aprendizaje (SENA) - Formación Profesional Integral&lt;/p&gt;
+&lt;/footer&gt;
+</code></pre>
+</div>
+</body>
+</html>
+</body>
+</html>
