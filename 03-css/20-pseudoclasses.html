@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20-pseudoclasses</title>
+    <link rel="stylesheet" href="../src/css/master.css">
+    <style>
+        div.box {
+            border: 4px solid #fff9;
+            border-radius: 4px;
+            width: 140px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1c2b4a;
+            background: #90caf9;
+        }
+
+        .contenedor {
+            border: 1px dashed #999;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* :hover / :focus / :active */
+        .btn-demo {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 4px;
+            background: #1e88e5;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all .15s ease;
+        }
+        .btn-demo:hover { background: #1565c0; transform: translateY(-2px); }
+        .btn-demo:active { background: #0d47a1; transform: translateY(1px); }
+        .btn-demo:focus { outline: 3px solid #fdd835; }
+
+        /* :visited / :link */
+        .contenedor a { margin-right: 20px; font-weight: bold; }
+        .contenedor a:link { color: #1e88e5; }
+        .contenedor a:visited { color: #8e24aa; }
+
+        /* :first-child / :last-child / :nth-child */
+        .lista-demo {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .lista-demo li {
+            padding: 10px 16px;
+            background: #eceff1;
+            border-radius: 4px;
+        }
+        .lista-demo li:first-child { background: #a5d6a7; }
+        .lista-demo li:last-child { background: #ef9a9a; }
+        .lista-demo li:nth-child(odd) { border: 2px solid #fdd835; }
+        .lista-demo li:nth-child(even) { border: 2px solid #90caf9; }
+
+        /* :checked */
+        .checked-demo label {
+            display: block;
+            margin: 6px 0;
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+        .checked-demo input:checked + span {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        .checked-demo input:checked ~ label {
+            background: #c8e6c9;
+        }
+
+        /* :disabled / :enabled */
+        .form-demo input {
+            padding: 8px;
+            margin-right: 10px;
+            border: 2px solid #90caf9;
+            border-radius: 4px;
+        }
+        .form-demo input:disabled {
+            background: #eee;
+            border-color: #ccc;
+            cursor: not-allowed;
+        }
+        .form-demo input:enabled:focus {
+            border-color: #1e88e5;
+            outline: none;
+        }
+
+        /* :empty */
+        
+
+        div.heart {
+            background-color: transparent;
+            position: relative;
+            margin-block: 2rem;
+            height: 100px;
+            width: 50px;
+        }
+        div.heart::before {
+            background-color: #FF84C6;
+            border-radius: calc(50px/2) calc(50px/2) 0 0 ;
+            position: absolute;
+            content: "";
+            height: 80px;
+            width: 50px;
+            transform: rotate(-45deg) translateX(20px);
+            left: 100px;
+            top: 0;
+        }
+        div.heart::after {
+            background-color:#FF84C6 ;
+            border-radius: 25px 25px 0 0;
+            position: absolute;
+            content: "";
+            height: 80px;
+            width: 50px;
+            transform: rotate(45deg) translate(-20px);
+            left: 150px;
+            top: 0;
+        }
+    </style>
+</head>
+<body class="css">
+    <a href="index.html" class="btn-home">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path></svg>
+    </a>
+    <main>
+        <header>
+            <h1>20-pseudoclasses</h1>
+            <p>Is used to define a special state of an element.</p>
+        </header>
+
+        <section>
+            <h4>:hover / :active / :focus</h4>
+            <div class="contenedor">
+                <button class="btn-demo">Pásale el mouse, haz click o tab</button>
+            </div>
+
+            <h4>:link / :visited</h4>
+            <div class="contenedor">
+                <a href="#">Enlace no visitado</a>
+                <a href="https://www.google.com" target="_blank">Enlace (visítalo para ver el cambio)</a>
+            </div>
+
+            <h4>:first-child / :last-child / :nth-child</h4>
+            <div class="contenedor">
+                <ul class="lista-demo">
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                </ul>
+            </div>
+
+            <h4>:checked</h4>
+            <div class="contenedor checked-demo">
+                <label>
+                    <input type="checkbox">
+                    <span>Marca esta casilla</span>
+                </label>
+            </div>
+
+            <h4>:disabled / :enabled</h4>
+            <div class="contenedor form-demo">
+                <input type="text" placeholder="Campo habilitado">
+                <input type="text" placeholder="Campo deshabilitado" disabled>
+            </div>
+
+            <h4>:empty</h4>
+            <div class="contenedor empty-demo">
+                <div>Este div tiene contenido, no aplica :empty</div>
+                <div></div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
