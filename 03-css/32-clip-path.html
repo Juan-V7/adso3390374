@@ -6,34 +6,31 @@
     <title>32-Clip Path</title>
     <link rel="stylesheet" href="../src/css/master.css">
     <style>
-        
-        div.clip {
-            background: url(imgs/real-madrid.png) no-repeat center;
-            background-size: contain;
-            background-color: #ffffff;
-            height: 270px;
-            margin-block: 1.2rem;
-            margin-inline: auto;
-            transition: all 0.5s ease-in-out;
-            width: 300px;
+    div.clip {
+        background: url(imgs/real-madrid.png) no-repeat center/cover;
+        border-radius: 14px;
+        margin: 0 auto;
+        height: 300px;
+        width: 300px;
+        transition: all 0.4s ease-in;
+
+        &.clip1 {
+            clip-path: polygon(10% 25%, 43% 33%, 35% 0%, 65% 0%, 58% 33%, 90% 25%, 90% 50%, 59% 47%, 68% 100%, 31% 100%, 42% 47%, 10% 50%);
+
+            &:hover {
+                clip-path: polygon(0 19%, 0 0, 35% 0%, 65% 0%, 100% 0, 100% 0, 100% 58%, 100% 100%, 68% 100%, 31% 100%, 0 100%, 0 53%);
+            }
+        }
+        &.clip2 {
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+
+            &:hover {
+                clip-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 59%, 100% 100%, 50% 100%, 0 100%, 0 87%, 0 34%, 0 0);
+            }
         }
 
-        div.clip1 {
-            clip-path: polygon(50% 0, 50% 0, 100% 100%, 0% 100%);
-        }
-
-        div.clip2 {
-            clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-        }
-
-        div.clip1:hover {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        }
-
-        div.clip2:hover {
-            clip-path: polygon(20% 0%, 0% 20%, 0 50%, 0% 80%, 20% 100%, 48% 100%, 80% 100%, 100% 80%, 100% 50%, 100% 20%, 80% 0%, 50% 0);
-        }
-    </style>
+    }
+</style>
 </head>
 <body class="css">
     <a href="index.html" class="btn-home">
@@ -48,9 +45,9 @@
         </header>
 
         <section class="clip-section">
-            <h3>Example 01:</h3>
+            <h4>Example 01:</h4>
             <div class="clip clip1"></div>
-            <h3>Example 02:</h3>
+            <h4>Example 02:</h4>
             <div class="clip clip2"></div>
         </section>
 

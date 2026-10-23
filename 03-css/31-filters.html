@@ -7,42 +7,50 @@
     <link rel="stylesheet" href="../src/css/master.css">
 
     <style>
+    img.filter {
+        background: linear-gradient(45deg, crimson 50%, darkblue 50%);
+        outline: 2px solid #fff;
+        border-radius: 14px;
+        display: block;
+        margin: 1rem auto;
+        padding: 0.4rem;
+        transition: all 0.2s ease-in; 
+        width: 140px;
+
         
-        img.filter {
-            border: none;
-            border-radius: 4px;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto;
-            transition: filter 0.5s ease-in-out, transform 0.3s ease;
-            width: 160px;
+        &.filter1 {
+            filter: grayscale(1);
         }
 
-        img.filter:hover {
-            filter: none;
-            transform: scale(1.02);
-        }
-
-        img.filter1 {
-            filter: grayscale(100%);
-        }
-
-        img.filter2 {
+        &.filter2 {
             filter: blur(5px);
         }
 
-        img.filter3 {
-            filter: sepia(85%);
+        &.filter3 {
+            filter: sepia(1);
         }
 
-        img.filter4 {
-            filter: brightness(60%);
+        &.filter4 {
+            filter: brightness(0.4);
         }
 
-        img.filter5 {
-            filter: invert(100%);
+        &.filter5 {
+            filter: invert(1); 
         }
-    </style>
+
+        &.filter6 {
+            filter: drop-shadow(0 0 12px #fff);
+        }
+
+        &.filter7 {
+            filter: hue-rotate(180deg);
+        }
+
+        &:hover {
+            filter: none;
+        }
+    }
+</style>
 </head>
 <body class="css">
     <a href="index.html" class="btn-home">
@@ -57,21 +65,21 @@
             <h4>Defines visual effects (like blur and saturation).</h4>
         </header>
 
-        <section class="filters-container">
-            <h3>Grayscale</h3>
-            <img class="filter filter1" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Isagi Grayscale">
-
-            <h3>Blur</h3>
-            <img class="filter filter2" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Isagi Blur">
-
-            <h3>Sepia</h3>
-            <img class="filter filter3" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Isagi Sepia">
-
-            <h3>Brightness</h3>
-            <img class="filter filter4" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Isagi Brightness">
-
-            <h3>Invert</h3>
-            <img class="filter filter5" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Isagi Invert">
+        <section>
+            <h4>GrayScale</h4>
+            <img class="filter filter1" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Inosuke">
+            <h4>Blur</h4>
+            <img class="filter filter2" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Inosuke">
+            <h4>Sepia</h4>
+            <img class="filter filter3" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Inosuke">
+            <h4>Brightness</h4>
+            <img class="filter filter4" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Inosuke">
+            <h4>Invert</h4>
+            <img class="filter filter5" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Inosuke">
+            <h4>Drop Shadow</h4>
+            <img class="filter filter6" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Inosuke">
+            <h4>HUE Rotate</h4>
+            <img class="filter filter7" src="imgs/Isagi-from-Blue-Lock-transparent-PNG-image-jpg-removebg-preview.png" alt="Inosuke">
         </section>
     </main>
 </body>
