@@ -27,7 +27,7 @@
                     left: 90px;
                     top: 140px;
                     width: 140px;
-                    animation: 2s animDk ease-in infinite;
+                    animation: 4s animDk ease-in infinite;
                 }
 
                 div.move {
@@ -56,22 +56,23 @@
         }
 
         @keyframes animDk {
-            0% {
-                transform: translateY(-80px) rotateX(0deg);
-            }
-            40% {
-                transform: translateY(0px) rotateX(0deg);
-            }
-            50% {
-                transform: translateY(0px) rotateX(180deg);
-            }
-            60% {
-                transform: translateY(0px) rotateX(0deg);
-            }
-            100% {
-                transform: translateY(-80px) rotateX(0deg);
-            }
-        } 
+        0%, 15% {
+        transform: translateY(0px);
+        }
+        25% {
+        
+        transform: translateY(-95px);
+        }
+        35%, 65% {
+        transform: translateY(0px);
+        }
+        75% {
+        transform: translateY(-95px);
+        }
+        85%, 100% {
+        transform: translateY(0px);
+        }
+    }
 
         @keyframes animRyno {
             0%, 100% {
@@ -83,32 +84,63 @@
         }
 
         @keyframes animMove {
-            0% {
-                top: 240px;
-                left: -140px;
-                transform: rotateY(0deg);
-            }
-            40% {
-                top: 240px;
-                left: 320px;
-                transform: rotateY(0deg);
-            }
-            50% {
-                top: 240px;
-                left: 320px;
-                transform: rotateY(180deg);
-            }
-            90% {
-                top: 240px;
-                left: -140px;
-                transform: rotateY(180deg);
-            }
-            100% {
-                top: 240px;
-                left: -140px;
-                transform: rotateY(0deg);
-            }
+        0% {
+        top: 240px;
+        left: -140px;
+        transform: rotateY(0deg);
         }
+        20% {
+        top: 240px;
+        left: 20px;
+        transform: rotateY(0deg);
+        }
+        25% {
+        
+        top: 175px;
+        left: 90px;
+        transform: rotateY(0deg) rotateZ(-12deg);
+        }
+        30% {
+        top: 240px;
+        left: 170px;
+        transform: rotateY(0deg);
+        }
+        40% {
+        top: 240px;
+        left: 320px;
+        transform: rotateY(0deg);
+        }
+        50% {
+        top: 240px;
+        left: 320px;
+        transform: rotateY(180deg);
+        }
+        70% {
+        top: 240px;
+        left: 170px;
+        transform: rotateY(180deg);
+        }
+        75% {
+        top: 175px;
+        left: 90px;
+        transform: rotateY(180deg) rotateZ(-12deg);
+        }
+        80% {
+        top: 240px;
+        left: 20px;
+        transform: rotateY(180deg);
+        }
+        90% {
+        top: 240px;
+        left: -140px;
+        transform: rotateY(180deg);
+        }
+        100% {
+        top: 240px;
+        left: -140px;
+        transform: rotateY(0deg);
+        }
+    }
     </style>
 </head>
 <body class="css">
