@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45-challenge-grid</title>
+    <link rel="stylesheet" href="../src/css/master.css">
+    <style>
+        body.css main {
+            width: 95% !important;
+            max-width: 780px !important;
+            margin: 0 auto !important;
+        }
+
+        body.css main section {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 24px !important;
+            width: 100% !important;
+            max-width: 780px !important;
+            padding: 24px !important;
+
+            div.card {
+                border: 3px solid #ffffff;
+                border-radius: 14px;
+                background-color: #18181b;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.03);
+                    border-color: #dc2626;
+                    box-shadow: 0 0 25px rgba(220, 38, 38, 0.85);
+                    z-index: 2;
+                }
+            }
+
+            div.grid-top {
+                display: grid;
+                width: 100%;
+                aspect-ratio: 1 / 1.05; 
+                gap: 14px;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                grid-template-areas:
+                    "seras    alucard  integra"
+                    "anderson alucard  walter"
+                    "hellsing hellsing mayor";
+
+                div.g1-seras    { grid-area: seras;    background-image: url("imgs/seras helsing.jpg"); }
+                div.g1-alucard  { grid-area: alucard;  background-image: url("imgs/helsing vertical .jpg"); }
+                div.g1-integra  { grid-area: integra;  background-image: url("imgs/integra helsing.jpg"); }
+                div.g1-anderson { grid-area: anderson; background-image: url("imgs/alexander helsing.jpg"); }
+                div.g1-walter   { grid-area: walter;   background-image: url("imgs/Walter C Dornez.jpg"); }
+                div.g1-hellsing { grid-area: hellsing; background-image: url("imgs/Alucard Nosferatu.jpg"); }
+                div.g1-mayor    { grid-area: mayor;    background-image: url("imgs/The Major.jpg"); }
+            }
+
+            div.grid-bottom {
+                display: grid;
+                width: 100%;
+                aspect-ratio: 4 / 3.2; 
+                gap: 14px;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                grid-template-areas:
+                    "dracula dracula pip      ripmy"
+                    "dracula dracula iscariot iscariot"
+                    "schro   captain iscariot iscariot";
+
+                div.g2-dracula  { grid-area: dracula;  background-image: url("imgs/alucar.jpg"); }
+                div.g2-pip      { grid-area: pip;      background-image: url("imgs/Pip Bernadotte.jpg"); }
+                div.g2-ripmy    { grid-area: ripmy;    background-image: url("imgs/Rip van Winkle.jpg"); }
+                div.g2-iscariot { grid-area: iscariot; background-image: url("imgs/Enrico Maxwell.jpg"); }
+                div.g2-schro    { grid-area: schro;    background-image: url("imgs/Schrodinger.jpg"); }
+                div.g2-captain  { grid-area: captain;  background-image: url("imgs/The Captain .jpg"); }
+            }
+        }
+    </style>
+</head>
+<body class="css">
+    <a href="index.html" class="btn-home">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path></svg>
+    </a>
+    <main>
+        <header>
+            <h1>45-challenge-grid</h1>
+            <h4>grid Areas: irregular Gallery.</h4>
+        </header>
+
+        <section>
+            <div class="grid-top">
+                <div class="card g1-seras"></div>
+                <div class="card g1-alucard"></div>
+                <div class="card g1-integra"></div>
+                <div class="card g1-anderson"></div>
+                <div class="card g1-walter"></div>
+                <div class="card g1-hellsing"></div>
+                <div class="card g1-mayor"></div>
+            </div>
+
+            <div class="grid-bottom">
+                <div class="card g2-dracula"></div>
+                <div class="card g2-pip"></div>
+                <div class="card g2-ripmy"></div>
+                <div class="card g2-iscariot"></div>
+                <div class="card g2-schro"></div>
+                <div class="card g2-captain"></div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
